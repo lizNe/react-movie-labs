@@ -55,5 +55,37 @@ describe("Filtering", () => {
     
   });
 
+  describe("Combined genre and title", () => {
+    // Define your test case for combined genre and title filter
+    it("displays movies with the selected genre and 'm' in the title", () => {
+      // Define your selected genre and title filter criteria
+      const selectedGenreId = 18; // Example: Drama genre
+      const selectedGenreText = "Drama"; // Example: Genre text
+      const titleSearchString = "m"; // Example: Title filter with 'm'
+  
+      // Filter movies by genre and title
+      const genreFilteredMovies = filterByGenre(movies, selectedGenreId);
+      const titleFilteredMovies = filterByTitle(movies, titleSearchString);
+      const combinedFilteredMovies = movies.filter((movie) => {
+        return (
+          genreFilteredMovies.some((gm) => gm.id === movie.id) &&
+          titleFilteredMovies.some((tm) => tm.id === movie.id)
+        );
+      });
+  
+      // Perform actions in the UI
+      cy.get("#genre-select").click();
+      cy.get("li").contains(selectedGenreText).click();
+      cy.get("#filled-search").clear().type(titleSearchString);
+  
+      // Assertions
+      cy.get(".MuiCardHeader-content").should("have.length", combinedFilteredMovies.length);
+      cy.get(".MuiCardHeader-content").each(($card, index) => {
+        cy.wrap($card).find("p").contains(combinedFilteredMovies[index].title);
+      });
+    });
+  });
+  
+
 
 });
