@@ -19,6 +19,7 @@ import { MoviesContext } from "../../contexts/moviesContext";
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
+  // const { watchlist, addToWatchlist } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -30,6 +31,17 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavorites(movie);
   };
+////////
+  // if (watchlist.find((id) => id === movie.id)) {
+  //   movie.watchlist = true;
+  // } else {
+  //   movie.watchlist = false
+  // }
+
+  // const handleAddToWatchlist = (e) => {
+  //   e.preventDefault();
+  //   addToWatchlist(movie);
+  // };
 
 
   return (

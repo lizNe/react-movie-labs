@@ -8,7 +8,7 @@ import AddToWatchlistIcon from '../components/cardIcons/addToWatchlist'
 
 const UpcomingMoviesPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getUpcomingMovies)
+  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -18,7 +18,10 @@ const UpcomingMoviesPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const movies = data.results;
-
+    // Redundant, but necessary to avoid app crashing.
+    const watchlist = movies.filter(m => m.watch)
+    localStorage.setItem('watchlist', JSON.stringify(watchlist))
+    const addToWatchlist = (movieId) => true 
 
   return (
     <PageTemplate
