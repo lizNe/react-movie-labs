@@ -1,14 +1,25 @@
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { SeriesContext } from "../../contexts/seriesContext";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const AddToFavoritesIcon = ({ movie }) => {
-  const context = useContext(MoviesContext);
+const AddToFavoritesIcon = ({ media, mediaType }) => {
+  const moviesContext = useContext(MoviesContext);
+  const seriesContext = useContext(SeriesContext);
 
   const handleAddToFavorites = (e) => {
     e.preventDefault();
-    context.addToFavorites(movie);
+    if (media && media.id) {
+      if (mediaType === "movie") {
+        moviesContext.addToFavorites(media);
+      } else if (mediaType === "serie") {
+        seriesContext.addToFavorites(media);
+      }
+    } else {
+      // Handle the case where media or its id property is undefined
+      console.error("Media object or its 'id' property is undefined.");
+    }
   };
 
   return (
@@ -17,6 +28,5 @@ const AddToFavoritesIcon = ({ movie }) => {
     </IconButton>
   );
 };
-
 
 export default AddToFavoritesIcon;

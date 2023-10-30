@@ -16,6 +16,7 @@ const MoviesContextProvider = (props) => {
     }
     setFavorites(newFavorites);
   };
+  
 
   const addToWatchlist = (movie) => {
     if (!watchlist.includes(movie.id)) {
