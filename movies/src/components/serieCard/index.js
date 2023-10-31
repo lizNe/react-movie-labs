@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { SeriesContext } from "../../contexts/seriesContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,10 +11,23 @@ import Grid from "@mui/material/Grid";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
-import img from "../../images/film-poster-placeholder.png";
-import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
-import { SeriesContext } from "../../contexts/seriesContext";
+import { Link } from "react-router-dom";
+
+const cardStyles = {
+  backgroundColor: "lightgray",
+  maxWidth: 345,
+  marginBottom: "10px",
+  border: "2px solid orange",
+};
+
+const mediaStyles = {
+  height: 300,
+};
+
+const titleStyles = {
+  textAlign: "center",
+};
 
 export default function SerieCard({ serie, action }) {
   const { favorites, addToFavorites } = useContext(SeriesContext);
@@ -24,13 +38,12 @@ export default function SerieCard({ serie, action }) {
     serie.favorite = false;
   }
 
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
+  const handleAddToFavorite = () => {
     addToFavorites(serie);
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={cardStyles}>
       <CardHeader
         avatar={
           serie.favorite ? (
@@ -40,18 +53,18 @@ export default function SerieCard({ serie, action }) {
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="10px" component="p" sx={titleStyles}>
             {serie.name}
           </Typography>
         }
       />
 
       <CardMedia
-        sx={{ height: 500 }}
+        sx={mediaStyles}
         image={
           serie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${serie.poster_path}`
-            : img
+            : "/path-to-default-image.jpg"
         }
       />
       <CardContent>
