@@ -1,94 +1,81 @@
-
+import React, { useContext } from "react";
+import { MoviesContext } from "../../contexts/moviesContext";
 import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CardHeader from "@mui/material/CardHeader";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import Grid from "@mui/material/Grid";
-import img from '../../images/film-poster-placeholder.png'
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
-import React, { useContext  } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
+const cardStyles = {
+  backgroundColor: "lightgray",
+  maxWidth: 345,
+  marginBottom: "10px",
+  border: "2px solid orange",
+};
+
+const mediaStyles = {
+  height: 300,
+};
+
+const titleStyles = {
+  textAlign: "center", // Center the title text
+};
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
-  // const { watchlist, addToWatchlist } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
-    movie.favorite = false
+    movie.favorite = false;
   }
 
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
+  const handleAddToFavorite = () => {
     addToFavorites(movie);
   };
-////////
-  // if (watchlist.find((id) => id === movie.id)) {
-  //   movie.watchlist = true;
-  // } else {
-  //   movie.watchlist = false
-  // }
-
-  // const handleAddToWatchlist = (e) => {
-  //   e.preventDefault();
-  //   addToWatchlist(movie);
-  // };
-
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={cardStyles}>
       <CardHeader
         avatar={
           movie.favorite ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
+            <Avatar sx={{ backgroundColor: "red" }}>
               <FavoriteIcon />
             </Avatar>
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
+          <Typography variant="10px" component="p" sx={titleStyles}>
+            {movie.title}
           </Typography>
         }
       />
 
       <CardMedia
-        sx={{ height: 500 }}
+        sx={mediaStyles}
         image={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
+            : "/path-to-default-image.jpg"
         }
       />
       <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
-            </Typography>
-          </Grid>
-        </Grid>
+        <Typography variant="h7" component="p">
+          {movie.release_date}
+        </Typography>
+        <Typography variant="h7" component="p">
+          Rating: {movie.vote_average}
+        </Typography>
       </CardContent>
       <CardActions disableSpacing>
         {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+        <Link to={`movies/${movie.id}`}>
+          <Button variant="outlined" size="small" color="primary">
             More Info ...
           </Button>
         </Link>
