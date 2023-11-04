@@ -1,27 +1,18 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'; 
-import { getGenres } from "../../api/tmdb-api";
+import MenuItem from "@mui/material/MenuItem";
+import { getTVGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
-import Spinner from '../spinner';
+import Spinner from "../spinner";
 
-const formControl = {
-  margin: 1,
-  minWidth: 220,
-  backgroundColor: "rgb(255, 255, 255)"
-};
 
 export default function FilterSeriesCard(props) {
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("genres", getTVGenres);
 
   if (isLoading) {
     return <Spinner />;
@@ -33,7 +24,7 @@ export default function FilterSeriesCard(props) {
 
   const genres = data.genres;
   if (genres[0].name !== "All") {
-    genres.unshift({ id: "0", name: "All" });
+    genres.unshift({ id: "0", name: "Genre" });
   }
 
   const handleChange = (e, type, value) => {
@@ -50,58 +41,55 @@ export default function FilterSeriesCard(props) {
   };
 
   return (
-    <Card
+    <Box
       sx={{
-        maxWidth: 345,
-        backgroundColor: "rgb(204, 204, 0)"
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
       }}
-      variant="outlined"
     >
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the TV Series.
-        </Typography>
-        <TextField
-          sx={{ ...formControl }}
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-          value={props.titleFilter}
-          onChange={handleTextChange}
-        />
-        <FormControl sx={{ ...formControl }}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-            labelId="genre-label"
-            id="genre-select"
-            defaultValue=""
-            value={props.genreFilter}
-            onChange={handleGenreChange}
-          >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-      </CardContent>
-      <CardMedia
-        sx={{ height: 300 }}
-        image={img} 
-        title="Filter"
+      <TextField
+        id="filled-search"
+        label="Search field"
+        type="search"
+        variant="filled"
+        value={props.titleFilter}
+        onChange={handleTextChange}
+        sx={{ width: "20%" }}
       />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the TV Series.
-          <br />
-        </Typography>
-      </CardContent>
-    </Card>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ width: "20%", marginTop: "8px" }}
+      >
+        <SearchIcon />
+        Filter series
+      </Button>
+      <FormControl variant="filled" sx={{ width: "100%"}}>
+        <Select
+          labelId="genre-label"
+          id="genre-select"
+          value={props.genreFilter}
+          onChange={handleGenreChange}
+          title="Genre"
+          sx={{ width: "15%",  backgroundColor: "#007bff", /* Set the background color */
+          color: "#fff", /* Set the text color */
+          border: "none", /* Remove the border */
+          borderRadius: "5px", /* Add rounded corners */
+          cursor: "pointer",
+          
+        
+        }}
+          
+        >
+          {genres.map((genre) => (
+            <MenuItem key={genre.id} value={genre.id}>
+              {genre.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }

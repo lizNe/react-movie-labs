@@ -6,7 +6,7 @@ import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 
-const TVSeriesPage = (props) => {
+const SerieHomePage = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('series', getSeries)
 
@@ -35,4 +35,4 @@ const TVSeriesPage = (props) => {
     />
 );
 };
-export default TVSeriesPage;
+export default SerieHomePage;

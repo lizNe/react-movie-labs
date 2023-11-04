@@ -22,11 +22,12 @@ function SiteHeader() {
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "TV Series", path: "/movies/series" },
-    { label: "Latest Movies", path: "/movies/latest" },
+    { label: "TV Series", path: "/series" },
+    { label: "Popular People", path: "/actors" },
     { label: "More", subMenu: [
+      { label: "Latest Movies", path: "/movies/latest" },
       { label: "Movie Favorites", path: "/movies/favorites" },
-      { label: "TV Show Favorites", path: "/movies/series/favorites" },
+      { label: "TV Show Favorites", path: "/series/favorites" },
     ] },
   ];
 

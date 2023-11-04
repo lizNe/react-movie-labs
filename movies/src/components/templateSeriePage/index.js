@@ -1,16 +1,16 @@
-import Carousel from 'react-bootstrap/Carousel';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import { useQuery } from "react-query";
-import Spinner from '../spinner';
-import MovieHeader from "../headerMovie";
+import Spinner from "../spinner";
+import SerieHeader from "../headerSerie";
 import Grid from "@mui/material/Grid";
-import { getMovieImages } from "../../api/tmdb-api";
+import { getSeriesImages } from "../../api/tmdb-api";
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TemplateMoviePage = ({ movie, children }) => {
+const TemplateSeriePage = ({ serie, children }) => {
   const { data, error, isLoading, isError } = useQuery(
-    ["images", { id: movie.id }],
-    getMovieImages
+    ["images", { id: serie.id }],
+    getSeriesImages
   );
 
   if (isLoading) {
@@ -24,7 +24,7 @@ const TemplateMoviePage = ({ movie, children }) => {
 
   return (
     <>
-      <MovieHeader movie={movie} />
+      <SerieHeader serie={serie} />
       <Grid container spacing={5} sx={{ padding: "15px" }}>
         <Grid item xs={3}>
           <Carousel>
@@ -47,4 +47,4 @@ const TemplateMoviePage = ({ movie, children }) => {
   );
 };
 
-export default TemplateMoviePage;
+export default TemplateSeriePage;

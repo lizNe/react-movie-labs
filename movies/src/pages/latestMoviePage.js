@@ -4,10 +4,11 @@ import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 import AddToWatchlistIcon from '../components/cardIcons/addToWatchlist';
 import { getLatestMovie } from '../api/tmdb-api';
+import { getMovieImages } from "../api/tmdb-api";
 import { MoviesContext } from "../contexts/moviesContext";
 import Snackbar from "@mui/material/Snackbar";
 
-const LatestMoviesPage = (props) => {
+const LatestMoviePage = (props) => {
   const { data: latestMovie, error, isLoading, isError } = useQuery('latest', getLatestMovie);
 
   if (isLoading) {
@@ -31,4 +32,4 @@ const LatestMoviesPage = (props) => {
   );
 };
 
-export default LatestMoviesPage;
+export default LatestMoviePage;

@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: linear-gradient(135deg, #000000, #0e1626); /* Your gradient background here */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.genre-button {
+  background-color: #007bff; /* Set the background color */
+  color: #fff; /* Set the text color */
+  border: none; /* Remove the border */
+  border-radius: 5px; /* Add rounded corners */
+  padding: 8px; /* Adjust padding for styling */
+  cursor: pointer; /* Add a pointer cursor on hover */
 }
