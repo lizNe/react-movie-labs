@@ -35,15 +35,15 @@ export default function ActorCard({ actor }) {
           {actor.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Birthday: {actor.birthday}
+          Known for Department: {actor.known_for_department}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Place of Birth: {actor.place_of_birth}
+          Gender: {actor.gender === 1 ? "Female" : "Male"}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Biography: {actor.biography}
+          Popularity: {actor.popularity}
         </Typography>
-        {/* Add more actor details as needed */}
+        {/* You can add more actor details here as needed */}
       </CardContent>
     </Card>
   );

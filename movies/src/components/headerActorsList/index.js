@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
 const HeaderActorsList = (props) => {
-  const title = props.title;
+  const name = props.name;
   const navigate = useNavigate();
   return (
     <Paper
@@ -24,7 +24,7 @@ const HeaderActorsList = (props) => {
       </IconButton>
 
       <Typography variant="h4" component="h3">
-        {title}
+        {name}
       </Typography>
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
         <ArrowForwardIcon color="primary" fontSize="large" />

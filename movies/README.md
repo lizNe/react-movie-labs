@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Assignment 1 - ReactJS app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: Elizabeth Neary
 
-## Available Scripts
+## Overview.
+My repository contains essential components that are used to build my movie fan website. Components are the building blocks of a user interface and these were used to build different elements and pages for my movie website. There is components for:
+-actorCard actorList 
+-cardIcons 
+-episodeList 
+-filterActorsCard filterMoviesCard filterSeriesCard 
+-headerActorsList headerMovie headerMovieList headerSerie headerSeriesList 
+-movieCard movieDetails movieList movieReview movieReviews 
+-reviewForm 
+-seasonList 
+-serieCard serieDetails seriesList 
+-siteHeader 
+-spinner 
+-templateActorListPage templateMovieListPage templateMoviePage templateSeriePage templateTVSeriesListPage
 
-In the project directory, you can run:
++ My repo also contains multiple pages used to display all the content from the TMDB APi such as:
+-addMovieReviewPage.js 
+-favoriteMoviesPage.js 
+-favoriteSeriesPage.js 
+-homePage.js 
+-latestMoviePage.js 
+-moviePage.js 
+-movieReviewPage.js 
+-popularActorPage.js 
+-serieHomePage.js 
+-seriePage.js 
+-upcomingMoviesPage.js
 
-### `npm start`
++ It contains contexts such as movieContext and seriesContext for passing data through the component tree without the need to pass props down manually at every level, there is hooks for useMovie and useSeries, an images folder  used to display some images on the website through different ui design frameworks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Features.
+[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
+ 
++ Feature 1
++ Feature 2
++ Feature 3
++ etc
++ etc
 
-### `npm test`
+## Setup requirements.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
 
-### `npm run build`
+## API endpoints.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
++ Discover Latest Movie Available - /movie/latest
++ Search Series List by Series Genre - /genre/tv/list
++ Discover all TV Series Available - /discover/tv
++ Get the images for all the TV Series - /tv/${id}/images
++ Get the details for a TV Series - /tv/${id}
++ Display all the Actors that are Popular right now - /person/popular
++ Get the images of the Actors - /person/${id}/images
++ Search for actors by Actors name - /search/person
++ Display all the seasons the the TV Series - /tv/${id}/season/${seasonNumber}
++ Display all the episodes of the TV Series - /tv/${id}/season/${seasonNumber}/episode/${episodeNumber}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Routing.
 
-### `npm run eject`
++ Disover a list of TV Series - "/series" 
++ Disover a list of Actors from all your favourite Movies - "/actors" 
++ Displays the Latest movie out - "movies/latest" 
++ Displays all the Series Favourited by User - "/series/favorites"
++ Displays the details of that Series when more info is clicked - "/series/:id"
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Independent learning (If relevant).
+Frameowrks - Bootstrap , Material UI , 

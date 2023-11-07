@@ -218,3 +218,53 @@ export const getMovies = () => {
       });
   };
   
+
+
+
+  export const getTVSeasons = (id, seasonNumber) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.seasons) {
+          return data.seasons;
+        }
+        return [];
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+  
+
+
+
+
+
+  
+  export const getTVEpisodes = (id, seasonNumber, episodeNumber) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.episodes) {
+          return data.episodes;
+        }
+        return [];
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
