@@ -44,7 +44,7 @@ My repository contains essential components that are used to build my movie fan 
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+I didn't clone my repository as i had already started making changes in my react-movies-lab and wanted to keep going forward using this repo for my CA as a foundation , howver i did create a new branch called moviesAppCA1 that i will use to make all my commits and pushes to for the remainder of the assignment. 
 
 ## API endpoints.
 
