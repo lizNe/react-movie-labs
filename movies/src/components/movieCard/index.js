@@ -1,29 +1,80 @@
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Tooltip from "@mui/material/Tooltip";
+
+
+const heartAnimation = {
+  animation: `$heartBeat 0.8s infinite`,
+};
+
 
 const cardStyles = {
   backgroundColor: "lightgray",
-  maxWidth: 345,
-  marginBottom: "10px",
+  maxWidth: "100%", // Adjust the width as needed
   border: "2px solid orange",
+  position: "relative",
+  "&:hover $heartIcon": {
+    color: "red",
+    ...heartAnimation,
+   } // Apply the animation on hover
 };
 
 const mediaStyles = {
-  height: 300,
+  height: 350,
 };
 
 const titleStyles = {
+  textAlign: "center",
+  fontSize: "19px",
+  fontWeight: "bold",
+  fontFamily: "Arial, sans-serif",
+  maxHeight: "3em", // Set a fixed height
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+};
+
+const dateStyles = {
   textAlign: "center", // Center the title text
+  fontSize: "15px", // Set the font size to 20 pixels
+};
+
+const ratingStyles = {
+  textAlign: "center", // Center the title text
+  fontSize: "15px", // Set the font size to 20 pixels
+};
+
+const heartIconStyles = {
+  position: "absolute",
+  top: "10px",
+  right: "10px",
+  color: "red", // Default color
+  "&:hover": {
+    color: "purple", // Change color on hover
+    ...heartAnimation, // Apply the animation on hover
+  },
+};
+
+// Keyframes for heart animation
+const keyframes = {
+  "@keyframes heartBeat": {
+    "0%": {
+      transform: "scale(1)",
+    },
+    "50%": {
+      transform: "scale(1.3)",
+    },
+    "100%": {
+      transform: "scale(1)",
+    },
+  },
 };
 
 export default function MovieCard({ movie, action }) {
@@ -41,21 +92,6 @@ export default function MovieCard({ movie, action }) {
 
   return (
     <Card sx={cardStyles}>
-      <CardHeader
-        avatar={
-          movie.favorite ? (
-            <Avatar sx={{ backgroundColor: "red" }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
-        title={
-          <Typography variant="10px" component="p" sx={titleStyles}>
-            {movie.title}
-          </Typography>
-        }
-      />
-
       <CardMedia
         sx={mediaStyles}
         image={
@@ -64,21 +100,29 @@ export default function MovieCard({ movie, action }) {
             : "/path-to-default-image.jpg"
         }
       />
+      {movie.favorite && (
+        <FavoriteIcon
+          sx={{ ...heartIconStyles, ...heartAnimation }}
+          onClick={handleAddToFavorite}
+        />      )}
       <CardContent>
-        <Typography variant="h7" component="p">
+        <Tooltip title={movie.title} arrow>
+          <Typography variant="subtitle1" component="p" sx={titleStyles}>
+            {movie.title}
+          </Typography>
+        </Tooltip>
+        <Typography variant="body2" component="p" sx={ratingStyles}>
           {movie.release_date}
         </Typography>
-        <Typography variant="h7" component="p">
+        <Typography variant="body2" component="p" sx={dateStyles}>
           Rating: {movie.vote_average}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="small" color="primary">
-            More Info ...
-          </Button>
-        </Link>
+        <Button variant="outlined" size="small" color="primary">
+          More Info ...
+        </Button>
       </CardActions>
     </Card>
   );

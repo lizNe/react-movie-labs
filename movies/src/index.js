@@ -8,15 +8,17 @@ import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import FavoriteSeriesPage from "./pages/favoriteSeriesPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import SerieHomePage from "./pages/serieHomePage";
-import LatestMoviePage from "./pages/latestMoviePage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import PopularActorsPage from "./pages/popularActorPage";
+import AddSerieReviewPage from "./pages/addSerieReviewPage"
 import SiteHeader from './components/siteHeader'
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import SeriesContextProvider from "./contexts/seriesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import SerieReviewPage from "./pages/serieReviewPage";
+import ActorPage from "./pages/actorPage";
 
 
 
@@ -40,14 +42,15 @@ const App = () => {
     <SeriesContextProvider>
     <Routes>
     <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
-      <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+    <Route path="/series/reviews/form" element={ <AddSerieReviewPage /> } />
+      <Route path="/series/reviews/:id" element={ <SerieReviewPage/> } />
       <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
       <Route path="/series" element={<SerieHomePage />} /> 
       <Route path="/actors" element={<PopularActorsPage />} /> 
-      <Route path="movies/latest" element={<LatestMoviePage />} /> 
       <Route path="/series/favorites" element={<FavoriteSeriesPage />} />
       <Route path="/series/:id" element={<SeriePage />} />
       <Route path="/movies/:id" element={<MoviePage />} />
+      <Route path="/actors/:id" element={<ActorPage />} />
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
       <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
       <Route path="/" element={<HomePage />} />

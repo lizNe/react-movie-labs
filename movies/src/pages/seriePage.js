@@ -26,7 +26,7 @@ const SeriePage = (props) => {
       {serie ? (
         <>
           <PageTemplate serie={serie}>
-            <SerieDetails serie={serie} />
+            <SerieDetails serie={serie} seasons={serie.seasons} episodes={serie.episodes} />
           </PageTemplate>
         </>
       ) : (

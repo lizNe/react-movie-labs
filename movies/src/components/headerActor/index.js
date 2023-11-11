@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
-const SerieHeader = (props) => {
-  const serie = props.serie;
+const ActorHeader = (props) => {
+  const actor = props.actor;
   const navigate = useNavigate();
 
   return (
@@ -27,12 +27,12 @@ const SerieHeader = (props) => {
       </IconButton>
 
       <Typography variant="h4" component="h3">
-        {serie.name}
-        <a href={serie.homepage}>
+        {actor.title}
+        <a href={actor.homepage}>
           <HomeIcon color="primary" />
         </a>
         <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${serie.tagline}"`} </span>
+        <span sx={{ fontSize: "1.5rem" }}>{`   "${actor.tagline}"`} </span>
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
@@ -42,4 +42,4 @@ const SerieHeader = (props) => {
   );
 };
 
-export default SerieHeader;
+export default ActorHeader;

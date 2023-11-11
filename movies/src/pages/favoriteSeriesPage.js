@@ -1,26 +1,26 @@
 import React, { useContext } from "react";
-import PageTemplate from "../components/templateTVSeriesListPage"; // Change this import to the appropriate template for TV series
-import { SeriesContext } from "../contexts/seriesContext"; // Change to the context for TV series
+import PageTemplate from "../components/templateTVSeriesListPage"; 
+import { SeriesContext } from "../contexts/seriesContext"; 
 import { useQueries } from "react-query";
-import { getSingleSeries } from "../api/tmdb-api"; // Change to the API for TV series
+import { getSingleSeries } from "../api/tmdb-api"; 
 import Spinner from '../components/spinner';
-// import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
-// import WriteReview from "../components/cardIcons/writeReview";
+import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
+import WriteSerieReview from "../components/cardIcons/writeSerieReview";
 
 const FavoriteSeriesPage = () => {
   const { favorites: serieIds } = useContext(SeriesContext); // Use the SeriesContext
 
-  // Create an array of queries and run them in parallel.
+  
   const favoriteSeriesQueries = useQueries(
     serieIds.map((serieId) => {
       return {
         queryKey: ["serie", { id: serieId }],
-        queryFn: getSingleSeries, // Use the appropriate function to fetch TV series
+        queryFn: getSingleSeries, 
       };
     })
   );
 
-  // Check if any of the parallel queries is still loading.
+ 
   const isLoading = favoriteSeriesQueries.find((s) => s.isLoading === true);
 
   if (isLoading) {
@@ -43,8 +43,8 @@ const FavoriteSeriesPage = () => {
       action={(serie) => {
         return (
           <>
-            {/* <RemoveFromFavorites item={serie} />
-            <WriteReview item={serie} /> */}
+            <RemoveFromFavorites serie={serie} />
+            <WriteSerieReview serie={serie} />
           </>
         );
       }}

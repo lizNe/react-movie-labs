@@ -1,6 +1,30 @@
-export const getMovies = () => {
+// Updated getMovies function
+export const getMovies = (page) => {
+  if (page < 1 || page > 1000) {
+    throw new Error("Invalid page number. Page must be between 1 and 1000.");
+  }
+
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((data) => {
+          throw new Error(data.message || "Failed to fetch movies.");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+
+
+export const getUpcomingMovies = (page) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -11,20 +35,6 @@ export const getMovies = () => {
      throw error
   });
 };
-
-  export const getUpcomingMovies = () => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-       throw error
-    });
-  };
 
   export const getLatestMovie = () => {
     return fetch(
@@ -120,20 +130,36 @@ export const getMovies = () => {
       });
         
   };
-
-  export const getSeries = () => {
+  export const getTVSeriesReviews = (id) => {
     return fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-       throw error
-    });
+      ` https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
+        
   };
+
+ 
+  export const getSeries = (page) => {
+    return fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc`
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+  
+  
+  
 
   export const getSeriesImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
@@ -217,29 +243,22 @@ export const getMovies = () => {
         throw error;
       });
   };
-  
 
-
-
-  export const getTVSeasons = (id, seasonNumber) => {
+  export const getActor = (args) => {
+    // console.log(args)
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.json().message);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.seasons) {
-          return data.seasons;
-        }
-        return [];
-      })
-      .catch((error) => {
-        throw error;
-      });
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
   };
   
 
@@ -247,11 +266,17 @@ export const getMovies = () => {
 
 
 
+
+
+
+
+
+
   
-  export const getTVEpisodes = (id, seasonNumber, episodeNumber) => {
+  export const getTVSeasonDetails = (id, seasonNumber) => {
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-      )
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.json().message);
@@ -268,3 +293,32 @@ export const getMovies = () => {
         throw error;
       });
   };
+  
+  
+
+
+
+
+
+  
+  export const getTVEpisodes = (id, seasonNumber, episodeNumber) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data) {
+          return data.episodes || [];
+        }
+        return [];
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+  

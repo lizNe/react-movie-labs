@@ -8,14 +8,24 @@ import { MoviesContext } from "../contexts/moviesContext";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
+import PaginationComponent from "../components/paginationComponent";
 
 const UpcomingMoviesPage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
+  const [currentPage, setCurrentPage] = useState(1);
   const { addToWatchlist } = useContext(MoviesContext);
+  const navigate = useNavigate();
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const { data, error, isLoading, isError } = useQuery(
+    ["upcoming", { page: currentPage }],
+    () => getUpcomingMovies(currentPage) // Pass the current page to the function
+  );
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const navigate = useNavigate();
 
   const showSnackbar = () => {
     setSnackbarMessage("Movie added to watchlist");
@@ -39,15 +49,30 @@ const UpcomingMoviesPage = (props) => {
 
   return (
     <>
-      <PageTemplate
-        title="Discover New Movies"
-        movies={movies}
-        action={(movie) => (
-          <>
-            <AddToWatchlistIcon movie={movie} onClick={() => addToWatchlist(movie)} showSnackbar={showSnackbar} />
-          </>
-        )}
-      />
+      {movies.length > 0 ? (
+        <>
+          <PageTemplate
+            title="Discover New Movies"
+            movies={movies}
+            action={(movie) => (
+              <>
+                <AddToWatchlistIcon
+                  movie={movie}
+                  onClick={() => addToWatchlist(movie)}
+                  showSnackbar={showSnackbar}
+                />
+              </>
+            )}
+          />
+          <PaginationComponent
+            pageCount={data.total_pages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      ) : (
+        <p>No upcoming movies found.</p>
+      )}
 
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}

@@ -3,6 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom"; // Import Link from React Router
+
 
 const cardStyles = {
   backgroundColor: "lightgray",
@@ -17,9 +20,16 @@ const mediaStyles = {
 
 const titleStyles = {
   textAlign: "center",
+  fontSize: "19px",
+  fontWeight: "bold",
+  fontFamily: "Arial, sans-serif",
+  maxHeight: "3em", // Set a fixed height
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
 };
 
-export default function ActorCard({ actor }) {
+export default function ActorCard({ actor}) {
   return (
     <Card sx={cardStyles}>
       <CardMedia
@@ -43,7 +53,11 @@ export default function ActorCard({ actor }) {
         <Typography variant="body2" color="text.secondary">
           Popularity: {actor.popularity}
         </Typography>
-        {/* You can add more actor details here as needed */}
+        <Link to={`/actors/${actor.id}`} style={{ textDecoration: 'none' }}>
+          <Button variant="outlined" size="small" color="primary">
+            More Info ...
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );

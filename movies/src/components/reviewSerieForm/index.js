@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useForm, Controller } from "react-hook-form";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { SeriesContext } from "../../contexts/seriesContext";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
@@ -63,15 +63,15 @@ const styles = {
   },
 };
 
-const ReviewForm = ({ movie }) => {
-  const context = useContext(MoviesContext);
+const ReviewSerieForm = ({ serie }) => {
+  const context = useContext(SeriesContext);
   const [rating, setRating] = useState(3);
   const [open, setOpen] = useState(false); 
   const navigate = useNavigate();
 
   const handleSnackClose = (event) => {
     setOpen(false);
-    navigate("/movies/favorites");
+    navigate("/series/favorites");
   };
   
   const defaultValues = {
@@ -93,10 +93,10 @@ const ReviewForm = ({ movie }) => {
   };
 
   const onSubmit = (review) => {
-    review.movieId = movie.id;
+    review.serieId = serie.id;
     review.rating = rating;
     // console.log(review);
-    context.addReview(movie, review);
+    context.addReview(serie, review);
     setOpen(true); // NEW
   };
 
@@ -174,7 +174,7 @@ const ReviewForm = ({ movie }) => {
             />
           )}
         />
-       {errors.review && (
+        {errors.review && (
           <Alert severity="error" sx={{ marginBottom: 2 }}>{errors.review.message}</Alert>
         )}
 
@@ -229,4 +229,4 @@ const ReviewForm = ({ movie }) => {
   );
 };
 
-export default ReviewForm;
+export default ReviewSerieForm;
