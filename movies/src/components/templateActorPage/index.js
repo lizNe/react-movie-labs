@@ -26,8 +26,8 @@ const TemplateActorPage = ({ actor, children }) => {
   return (
     <>
       <ActorHeader actor={actor} />
-      <Grid container spacing={5} sx={{ padding: "15px" }}>
-        <Grid item xs={3}>
+      <Grid container spacing={4} sx={{ padding: "15px" }}>
+        <Grid item xs={2.5}>
           <Card>
             <CardMedia
               component="img"

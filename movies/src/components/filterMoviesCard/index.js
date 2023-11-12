@@ -22,9 +22,13 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
 
-  const genres = data.genres;
-  if (genres[0].name !== "All") {
-    genres.unshift({ id: "0", name: "Genre" });
+
+  let genres = data.genres;
+
+  // Check if "Genre" is already present, and if not, add it
+  const hasGenreOption = genres.some((genre) => genre.name === "Genre");
+  if (!hasGenreOption) {
+    genres = [{ id: "0", name: "Genre" }, ...genres];
   }
 
   const handleChange = (e, type, value) => {
@@ -42,54 +46,66 @@ export default function FilterMoviesCard(props) {
 
   return (
     <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <TextField
-        id="filled-search"
-        label="Search field"
-        type="search"
-        variant="filled"
-        value={props.titleFilter}
-        onChange={handleTextChange}
-        sx={{ width: "20%" }}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ width: "20%", marginTop: "8px" }}
-      >
-        <SearchIcon />
-        Filter Movies
-      </Button>
-      <FormControl variant="filled" sx={{ width: "100%"}}>
-        <Select
-          labelId="genre-label"
-          id="genre-select"
-          value={props.genreFilter}
-          onChange={handleGenreChange}
-          title="Genre"
-          sx={{ width: "15%",  backgroundColor: "#007bff", /* Set the background color */
-          color: "#fff", /* Set the text color */
-          border: "none", /* Remove the border */
-          borderRadius: "5px", /* Add rounded corners */
+  sx={{
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: "20px",  // Adjust the gap as needed
+    marginTop: "20px",
+  }}
+>
+  <Box>
+    <FormControl variant="filled" sx={{ width: "200px", marginTop:"2px"}}>
+      <Select
+        labelId="genre-label"
+        id="genre-select"
+        value={props.genreFilter}
+        onChange={handleGenreChange}
+        title="Genre"
+        sx={{
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
           cursor: "pointer",
           
-        
+      
         }}
-          
-        >
-          {genres.map((genre) => (
-            <MenuItem key={genre.id} value={genre.id}>
-              {genre.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
+      >
+        {genres.map((genre) => (
+          <MenuItem key={genre.id} value={genre.id}>
+            {genre.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  </Box>
+  <Box sx={{
+    marginLeft: "250px", width:"40%"
+  }}>
+    <TextField
+      id="filled-search"
+      label="Search field"
+      type="search"
+      variant="filled"
+      value={props.titleFilter}
+      onChange={handleTextChange}
+      sx={{ width: "100%", marginBottom:"4px"}}
+    />
+    <Box>
+    <Button
+      variant="contained"
+      color="primary"
+      sx={{ width:"100%" }}
+    >
+      <SearchIcon />
+      Filter Movies
+    </Button>
+  </Box>
+  </Box>
+  
+  
+</Box>
+
   );
 }

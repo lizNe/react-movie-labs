@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
 const PageCarousel = () => {
   const [index, setIndex] = useState(0);
@@ -9,38 +8,62 @@ const PageCarousel = () => {
     setIndex(selectedIndex);
   };
 
+
+    const overlayStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the opacity here
+    pointerEvents: 'none', // Allows click-through to the image beneath
+  };
+
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="path_to_your_image1.jpg"
+          src="/iron.jpg"
           alt="First slide"
+          style={{ maxHeight: '300px', objectFit: 'cover' }}
+
         />
+        <div style={overlayStyle}></div>
+
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Explore the Cinematic Universe</h3>
+          <p>Immerse yourself in a cinematic journey with our extensive movie database.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="path_to_your_image1.jpg"
+          src="/trans.jpg"
           alt="First slide"
-        />        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          style={{ maxHeight: '300px', objectFit: 'cover' }}
+
+        />   
+        <div style={overlayStyle}></div>
+     
+        <Carousel.Caption>
+          <h3>Create Your Movie Haven</h3>
+          <p>Organize your watchlist for upcoming movie nights.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="path_to_your_image1.jpg"
+          src="/xmen.jpg"
           alt="First slide"
-        />        <Carousel.Caption>
-          <h3>Third slide label</h3>
+          style={{ maxHeight: '300px', objectFit: 'cover' }}
+
+        />    
+         <div style={overlayStyle}></div>
+        <Carousel.Caption>
+          <h3>Personalized Movie Experience</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          Easily manage your favorites, watchlists, and reviews with our user-friendly platform.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

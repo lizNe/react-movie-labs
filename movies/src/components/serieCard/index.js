@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom"; // Import Link from React Router
+
 
 const heartAnimation = {
   animation: `$heartBeat 0.8s infinite`,
@@ -127,9 +129,11 @@ export default function SerieCard({ serie, action }) {
       </CardContent>
       <CardActions disableSpacing>
         {action(serie)}
+        <Link to={`/series/${serie.id}`} style={{ textDecoration: 'none' }}>
         <Button variant="outlined" size="small" color="primary">
           More Info ...
         </Button>
+        </Link>
       </CardActions>
     </Card>
   );

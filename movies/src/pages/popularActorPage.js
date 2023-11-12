@@ -1,13 +1,23 @@
-import React from "react";
 import { getPopularActors } from "../api/tmdb-api";
 import PageTemplate from '../components/templateActorListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
+import PaginationComponent from "../components/paginationComponent";
+import React, { useState } from "react";
+
 
 
 const PopularActorsPage = (props) => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const {  data, error, isLoading, isError }  = useQuery('actors', getPopularActors)
+  const { data, error, isLoading, isError } = useQuery(
+    ["actors", { page: currentPage }],
+    () => getPopularActors(currentPage)
+  );
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   if (isLoading) {
     return <Spinner />
@@ -24,14 +34,18 @@ const PopularActorsPage = (props) => {
   const addToFavorites = (movieId) => true 
 
   return (
-    <PageTemplate
-      title="Popular Actors"
-      actors={actors}
-    //   action={(movie) => {
-    //     return <AddToFavoritesIcon media={movie} mediaType="movie" />
-
-    //   }}
-    />
-);
+    <>
+      <PageTemplate
+        title="Popular Actors"
+        actors={actors}
+        
+      />
+      <PaginationComponent
+        pageCount={data.total_pages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
+    </>
+  );
 };
 export default PopularActorsPage;

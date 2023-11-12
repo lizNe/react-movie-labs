@@ -24,7 +24,7 @@ function ActorListPageTemplate({ actors, name, action }) {
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>
           <FilterCard
             onUserInput={handleChange}
-            titleFilter={nameFilter}
+            nameFilter={nameFilter}
           />
         </Grid>
         <ActorList action={action} actors={displayedActors}></ActorList>

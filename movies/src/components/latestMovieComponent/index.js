@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { Spinner } from "react-bootstrap";
 import { getLatestMovie } from "../../api/tmdb-api";
+import { Spinner } from "react-bootstrap";
 import {
   CCard,
   CCardBody,
@@ -14,6 +14,7 @@ import {
 
 const LatestMovie = () => {
   const { data, error, isLoading, isError } = useQuery("latest", getLatestMovie);
+  const [expanded, setExpanded] = useState(false);
 
   if (isLoading) {
     return <Spinner />;
@@ -24,7 +25,7 @@ const LatestMovie = () => {
   }
 
   const latest = data;
-
+  const overviewStyle = { maxHeight: expanded ? "none" : "150px", overflow: "hidden" };
 
   return (
     <div className="my-5 d-flex justify-content-center flex-column align-items-center">
@@ -34,18 +35,29 @@ const LatestMovie = () => {
       <CCard style={{ maxWidth: "540px" }}>
         <CRow className="g-0">
           <CCol md={4}>
-         <CCardImage
-        src={
-          latest.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${latest.poster_path}`
-            : "src/images/default.jpg"
-        }
-      />
+            <CCardImage
+              src={
+                latest.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${latest.poster_path}`
+                  : process.env.PUBLIC_URL + "/default.jpg"
+              }
+              style={{ height: "100%" }}
+            />
           </CCol>
           <CCol md={8}>
             <CCardBody>
               <CCardTitle>{latest.title}</CCardTitle>
-              <CCardText>{latest.overview}</CCardText>
+              <CCardText style={overviewStyle}>
+                {latest.overview}
+              </CCardText>
+              {latest.overview.length > 150 && (
+                <div
+                  style={{ cursor: "pointer", color: "blue", marginTop: "5px" }}
+                  onClick={() => setExpanded(!expanded)}
+                >
+                  {expanded ? "See Less" : "See More"}
+                </div>
+              )}
               <CCardText>
                 <strong>Release Date:</strong> {latest.release_date}
               </CCardText>

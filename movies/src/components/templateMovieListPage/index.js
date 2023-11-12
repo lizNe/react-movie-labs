@@ -4,6 +4,7 @@ import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import LatestMovie from "../latestMovieComponent";
+import PageCarousel from "../pageCarousel";
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -28,6 +29,8 @@ function MovieListPageTemplate({ movies, title, action }) {
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
         <Header title={title} />
+        <PageCarousel /> 
+
         </Grid>
         <Grid item xs={12}>
         <FilterCard
