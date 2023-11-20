@@ -7,9 +7,8 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import SerieReview from "../serieReview";
 import Drawer from "@mui/material/Drawer";
-
+import SeriesReviews from "../seriesReviews";
 
 const root = {
   display: "flex",
@@ -82,7 +81,7 @@ const SerieDetails = ({ serie }) => {
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <SerieReview serie={serie} />
+        <SeriesReviews serie={serie} />
       </Drawer>
     </>
   );

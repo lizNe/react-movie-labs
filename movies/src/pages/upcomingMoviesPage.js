@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToWatchlistIcon from "../components/cardIcons/addToWatchlist";
-import { MoviesContext } from "../contexts/moviesContext";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +11,9 @@ import PaginationComponent from "../components/paginationComponent";
 
 const UpcomingMoviesPage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { addToWatchlist } = useContext(MoviesContext);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  
   const navigate = useNavigate();
 
   const handlePageChange = (newPage) => {
@@ -24,8 +25,6 @@ const UpcomingMoviesPage = (props) => {
     () => getUpcomingMovies(currentPage) // Pass the current page to the function
   );
 
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const showSnackbar = () => {
     setSnackbarMessage("Movie added to watchlist");
@@ -55,13 +54,10 @@ const UpcomingMoviesPage = (props) => {
             title="Discover New Movies"
             movies={movies}
             action={(movie) => (
-              <>
-                <AddToWatchlistIcon
-                  movie={movie}
-                  onClick={() => addToWatchlist(movie)}
-                  showSnackbar={showSnackbar}
-                />
-              </>
+              <AddToWatchlistIcon
+                media={movie}
+                showSnackbar={showSnackbar}
+              />
             )}
           />
           <PaginationComponent

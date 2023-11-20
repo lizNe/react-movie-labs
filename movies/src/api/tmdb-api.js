@@ -3,7 +3,6 @@ export const getMovies = (page) => {
   if (page < 1 || page > 1000) {
     throw new Error("Invalid page number. Page must be between 1 and 1000.");
   }
-
   return fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
   )
@@ -144,6 +143,9 @@ export const getUpcomingMovies = (page) => {
 
  
   export const getSeries = (page) => {
+    if (page < 1 || page > 1000) {
+      throw new Error("Invalid page number. Page must be between 1 and 1000.");
+    }
     return fetch(
       `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc`
     )
@@ -198,6 +200,9 @@ export const getUpcomingMovies = (page) => {
   
 
   export const getPopularActors = (page) => {
+    if (page < 1 || page > 1000) {
+      throw new Error("Invalid page number. Page must be between 1 and 1000.");
+    }
     return fetch(
       `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
     ).then((response) => {
@@ -261,6 +266,15 @@ export const getUpcomingMovies = (page) => {
    });
   };
   
+
+
+
+
+
+
+
+
+
 
 
 

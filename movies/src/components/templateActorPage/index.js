@@ -4,12 +4,12 @@ import Spinner from '../spinner';
 import ActorHeader from '../headerActor';
 import Grid from "@mui/material/Grid";
 import { getActorImages } from '../../api/tmdb-api';
-import { Card, CardContent, CardMedia } from "@mui/material";
+import { Card, CardMedia } from "@mui/material";
 
 
 
 const TemplateActorPage = ({ actor, children }) => {
-  const { data, error, isLoading, isError } = useQuery(
+  const { error, isLoading, isError } = useQuery(
     ["images", { id: actor.id }],
     getActorImages
   );

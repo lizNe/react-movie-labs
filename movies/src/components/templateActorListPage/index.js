@@ -3,8 +3,9 @@ import Header from "../headerActorsList";
 import FilterCard from "../filterActorsCard"; // You may need to adjust the import
 import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
+import PageCarousel from "../pageCarousel";
 
-function ActorListPageTemplate({ actors, name, action }) {
+function ActorListPageTemplate({ actors, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
 
   let displayedActors = actors.filter((a) => {
@@ -18,7 +19,8 @@ function ActorListPageTemplate({ actors, name, action }) {
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
-        <Header name={name} />
+        <Header title={title} />
+        <PageCarousel /> 
       </Grid>
       <Grid item container spacing={2}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>

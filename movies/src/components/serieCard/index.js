@@ -58,6 +58,7 @@ const heartIconStyles = {
   top: "10px",
   right: "10px",
   color: "red", // Default color
+  fontSize: "50px",
   "&:hover": {
     color: "purple", // Change color on hover
     ...heartAnimation, // Apply the animation on hover
@@ -65,19 +66,19 @@ const heartIconStyles = {
 };
 
 // Keyframes for heart animation
-const keyframes = {
-  "@keyframes heartBeat": {
-    "0%": {
-      transform: "scale(1)",
-    },
-    "50%": {
-      transform: "scale(1.3)",
-    },
-    "100%": {
-      transform: "scale(1)",
-    },
-  },
-};
+// const keyframes = {
+//   "@keyframes heartBeat": {
+//     "0%": {
+//       transform: "scale(1)",
+//     },
+//     "50%": {
+//       transform: "scale(1.3)",
+//     },
+//     "100%": {
+//       transform: "scale(1)",
+//     },
+//   },
+// };
 
 export default function SerieCard({ serie, action }) {
   const { favorites, addToFavorites } = useContext(SeriesContext);

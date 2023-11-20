@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Tooltip from "@mui/material/Tooltip";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom"; 
 
 
 
@@ -19,13 +19,13 @@ const heartAnimation = {
 
 const cardStyles = {
   backgroundColor: "lightgray",
-  maxWidth: "100%", // Adjust the width as needed
+  maxWidth: "100%", 
   border: "2px solid orange",
   position: "relative",
   "&:hover $heartIcon": {
     color: "red",
     ...heartAnimation,
-   } // Apply the animation on hover
+   } 
 };
 
 const mediaStyles = {
@@ -57,6 +57,7 @@ const heartIconStyles = {
   position: "absolute",
   top: "10px",
   right: "10px",
+  fontSize: "50px",
   color: "red", // Default color
   "&:hover": {
     color: "purple", // Change color on hover
@@ -64,20 +65,20 @@ const heartIconStyles = {
   },
 };
 
-// Keyframes for heart animation
-const keyframes = {
-  "@keyframes heartBeat": {
-    "0%": {
-      transform: "scale(1)",
-    },
-    "50%": {
-      transform: "scale(1.3)",
-    },
-    "100%": {
-      transform: "scale(1)",
-    },
-  },
-};
+// // Keyframes for heart animation
+// const keyframes = {
+//   "@keyframes heartBeat": {
+//     "0%": {
+//       transform: "scale(1)",
+//     },
+//     "50%": {
+//       transform: "scale(1.3)",
+//     },
+//     "100%": {
+//       transform: "scale(1)",
+//     },
+//   },
+// };
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);

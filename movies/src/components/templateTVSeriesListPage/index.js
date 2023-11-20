@@ -3,6 +3,7 @@ import Header from "../headerSeriesList";
 import FilterCard from "../filterSeriesCard";
 import SeriesList from "../seriesList";
 import Grid from "@mui/material/Grid";
+import PageCarousel from "../pageCarousel";
 
 function TVSeriesListPageTemplate({ series, title, action }) {
   const [nameTVFilter, setNameTVFilter] = useState("");
@@ -26,11 +27,12 @@ function TVSeriesListPageTemplate({ series, title, action }) {
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
         <Header title={title} />
+        <PageCarousel /> 
         </Grid>
         <Grid item xs={12}>
         <FilterCard
             onUserInput={handleChange}
-            titleFilter={nameTVFilter}
+            nameFilter={nameTVFilter}
             genreFilter={genreTVFilter}
           />
       </Grid>

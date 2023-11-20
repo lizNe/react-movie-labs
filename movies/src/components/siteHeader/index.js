@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, useNavigate } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function SiteHeader() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -19,17 +19,32 @@ function SiteHeader() {
     setShowOffcanvas(false);
   };
 
-  const menuOptions = [
+  const desktopMenuOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "TV Series", path: "/series" },
     { label: "Popular People", path: "/actors" },
     { label: "More", subMenu: [
-      { label: "Latest Movies", path: "/movies/latest" },
       { label: "Movie Favorites", path: "/movies/favorites" },
       { label: "TV Show Favorites", path: "/series/favorites" },
+      { label: "Watchlist", path: "/movies/upcoming/watchlist" },
+
     ] },
   ];
+
+  const mobileMenuOptions = [
+    { label: "Home", path: "/" },
+    { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "TV Series", path: "/series" },
+    { label: "Popular People", path: "/actors" },
+    { label: "Movie Favorites", path: "/movies/favorites" },
+    { label: "TV Show Favorites", path: "/series/favorites" },
+    { label: "Watchlist", path: "/movies/upcoming/watchlist" },
+  ];
+
+  const menuOptions = window.innerWidth < 992 ? mobileMenuOptions : desktopMenuOptions;
+
+
 
   return (
     <>
@@ -41,7 +56,7 @@ function SiteHeader() {
           </span>
           <Navbar.Toggle onClick={() => setShowOffcanvas(!showOffcanvas)} />
           <Navbar.Collapse id="navbarNav">
-            <Nav className="mr-auto">
+            <ul className="navbar-nav">
               {menuOptions.map((opt) => (
                 opt.subMenu ? (
                   <NavDropdown title={opt.label} id={opt.label} key={opt.label}>
@@ -67,12 +82,12 @@ function SiteHeader() {
                   </Nav.Link>
                 )
               ))}
-            </Nav>
+            </ul>
+            <Form className="d-flex"  style={{ marginLeft: 'auto' }}>
+              <Form.Control type="search" placeholder="Search" aria-label="Search" />
+              <Button variant="warning">Search</Button>
+            </Form>
           </Navbar.Collapse>
-          <Form className="d-flex">
-            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-            <Button variant="warning">Search</Button>
-          </Form>
         </Container>
       </Navbar>
 
@@ -86,7 +101,7 @@ function SiteHeader() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul className="navbar-nav">
-            {menuOptions.map((opt) => (
+            {mobileMenuOptions.map((opt) => (
               <li key={opt.label} className="nav-item">
                 <a
                   href={opt.path}

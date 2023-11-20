@@ -50,9 +50,9 @@ const LatestMovie = () => {
               <CCardText style={overviewStyle}>
                 {latest.overview}
               </CCardText>
-              {latest.overview.length > 150 && (
+              {latest.overview.length > 100 && (
                 <div
-                  style={{ cursor: "pointer", color: "blue", marginTop: "5px" }}
+                  style={{ cursor: "pointer", color: "blue", marginTop: "5px", marginBottom:"2px", textDecoration: "underline", fontWeight: "bold", }}
                   onClick={() => setExpanded(!expanded)}
                 >
                   {expanded ? "See Less" : "See More"}

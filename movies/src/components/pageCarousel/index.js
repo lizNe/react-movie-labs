@@ -26,7 +26,7 @@ const PageCarousel = () => {
           className="d-block w-100"
           src="/iron.jpg"
           alt="First slide"
-          style={{ maxHeight: '300px', objectFit: 'cover' }}
+          style={{ maxHeight: '400px', objectFit: 'cover' }}
 
         />
         <div style={overlayStyle}></div>
@@ -41,7 +41,7 @@ const PageCarousel = () => {
           className="d-block w-100"
           src="/trans.jpg"
           alt="First slide"
-          style={{ maxHeight: '300px', objectFit: 'cover' }}
+          style={{ maxHeight: '400px', objectFit: 'cover' }}
 
         />   
         <div style={overlayStyle}></div>
@@ -56,7 +56,7 @@ const PageCarousel = () => {
           className="d-block w-100"
           src="/xmen.jpg"
           alt="First slide"
-          style={{ maxHeight: '300px', objectFit: 'cover' }}
+          style={{ maxHeight: '400px', objectFit: 'cover' }}
 
         />    
          <div style={overlayStyle}></div>

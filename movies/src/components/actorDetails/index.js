@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Fab, Drawer } from "@mui/material";
+import { Card, CardContent, Typography, Fab, Drawer } from "@mui/material";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import React, { useState } from "react";
 

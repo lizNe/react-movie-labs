@@ -32,6 +32,8 @@ export default function FilterActorsCard(props) {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
+        marginTop:"30px",
+        marginBottom:"50px"
       }}
     >
       <TextField

@@ -55,7 +55,7 @@ export default function FilterMoviesCard(props) {
   }}
 >
   <Box>
-    <FormControl variant="filled" sx={{ width: "200px", marginTop:"2px"}}>
+    <FormControl variant="filled" sx={{ width: "200px", marginTop:"30px"}}>
       <Select
         labelId="genre-label"
         id="genre-select"
@@ -81,7 +81,7 @@ export default function FilterMoviesCard(props) {
     </FormControl>
   </Box>
   <Box sx={{
-    marginLeft: "250px", width:"40%"
+    marginLeft: "550px", width:"40%"
   }}>
     <TextField
       id="filled-search"
@@ -90,14 +90,14 @@ export default function FilterMoviesCard(props) {
       variant="filled"
       value={props.titleFilter}
       onChange={handleTextChange}
-      sx={{ width: "100%", marginBottom:"4px"}}
+      sx={{ width: "50%", marginBottom:"4px"}}
     />
     <Box>
     <Button
       variant="contained"
       color="primary"
-      sx={{ width:"100%" }}
-    >
+      sx={{ width: "50%", marginTop: "8px" }}
+      >
       <SearchIcon />
       Filter Movies
     </Button>

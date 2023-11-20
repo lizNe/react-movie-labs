@@ -3,14 +3,18 @@ import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-const AddToWatchlistIcon = ({ movie, showSnackbar }) => {
-  const context = useContext(MoviesContext);
+
+const AddToWatchlistIcon = ({ media , showSnackbar}) => {
+  const moviesContext = useContext(MoviesContext);
 
   const handleAddToWatchlist = (e) => {
     e.preventDefault();
-    context.addToWatchlist(movie);
-    showSnackbar("Movie added to watchlist");
-
+    if (media && media.id) {
+      moviesContext.addToWatchlist(media);
+      showSnackbar("Movie added to watchlist");
+    } else {
+      console.error("Media object or its 'id' property is undefined.");
+    }
   };
 
   return (
