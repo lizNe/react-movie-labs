@@ -70,10 +70,7 @@ const PopularActorsPage = (props) => {
   } 
   const actors = data.results;
 
-  // Redundant, but necessary to avoid app crashing.
-  const favorites = actors.filter(a => a.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
-  // const addToFavorites = (movieId) => true 
+
 
   return (
     <>

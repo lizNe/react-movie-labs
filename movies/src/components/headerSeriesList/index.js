@@ -17,6 +17,8 @@ const HeaderSeriesList = (props) => {
         justifyContent: "space-around",
         flexWrap: "wrap",
         marginBottom: 1.5,
+        backgroundColor: '#94DAF0',
+        color: '#FDFDFD',
       }}
     >
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>

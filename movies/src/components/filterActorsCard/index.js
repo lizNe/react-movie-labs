@@ -10,14 +10,14 @@ export default function FilterActorsCard(props) {
   const handleTextChange = (e) => {
     const { value } = e.target;
     setSearchQuery(value);
+    props.onSearchActors(value);
   };
 
   const handleSearch = async () => {
     try {
       if (searchQuery) {
         const result = await props.onSearchActors(searchQuery);
-        // Assuming props.onSearchActors is a function passed from the parent to update the actor list
-        props.onSearchActors(result.results); // Update the actor list in your parent component
+        props.onSearchActors(result.results);
       }
     } catch (error) {
       console.error("Error searching for actors:", error);

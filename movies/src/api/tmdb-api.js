@@ -4,7 +4,7 @@ export const getMovies = (page) => {
     throw new Error("Invalid page number. Page must be between 1 and 1000.");
   }
   return fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
   )
     .then((response) => {
       if (!response.ok) {

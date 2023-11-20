@@ -19,7 +19,11 @@ const SerieHeader = (props) => {
             justifyContent: "space-around",
             flexWrap: "wrap",
             padding: 1.5,
-            margin: 0,
+            margin: 2.5,
+            backgroundColor: '#94DAF0',
+            color: '#FDFDFD',
+
+
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1) } >
@@ -32,7 +36,6 @@ const SerieHeader = (props) => {
           <HomeIcon color="primary" />
         </a>
         <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${serie.tagline}"`} </span>
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >

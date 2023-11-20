@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom"; // Import Link from React Router
+import Tooltip from "@mui/material/Tooltip";
 
 
 const cardStyles = {
@@ -41,9 +42,11 @@ export default function ActorCard({ actor}) {
         }
       />
       <CardContent>
-        <Typography variant="h5" component="h2" sx={titleStyles}>
-          {actor.name}
-        </Typography>
+      <Tooltip title ={actor.name} arrow>
+          <Typography variant="h5" component="h2" sx={titleStyles}>
+            {actor.name}
+          </Typography>
+        </Tooltip>
         <Typography variant="body2" color="text.secondary">
           Known for Department: {actor.known_for_department}
         </Typography>

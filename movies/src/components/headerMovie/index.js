@@ -19,7 +19,11 @@ const MovieHeader = (props) => {
             justifyContent: "space-around",
             flexWrap: "wrap",
             padding: 1.5,
-            margin: 0,
+            margin: 2.5,
+            backgroundColor: '#19376A',
+            color: '#FDFDFD',
+
+
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1) } >

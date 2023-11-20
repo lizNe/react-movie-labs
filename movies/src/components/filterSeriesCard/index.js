@@ -82,7 +82,7 @@ export default function FilterSeriesCard(props) {
       </FormControl>
     </Box>
     <Box sx={{
-    marginLeft: "550px", width:"40%"
+    marginLeft: "400px", width:"40%"
   }}>
       <TextField
         id="filled-search"

@@ -1,6 +1,5 @@
-import { Card, CardContent, Typography, Fab, Drawer } from "@mui/material";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import React, { useState } from "react";
+import { Card, CardContent, Typography} from "@mui/material";
+import React, { } from "react";
 
 const root = {
   display: "flex",
@@ -17,7 +16,7 @@ const root = {
 };
 
 const ActorDetails = ({ actor }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  // const [drawerOpen, setDrawerOpen] = useState(false);
 
   const cardTitleStyle = {
     fontSize: "1.8rem",
@@ -106,29 +105,8 @@ const ActorDetails = ({ actor }) => {
         </Typography>
       </CardContent>
 
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => setDrawerOpen(true)}
-        style={{
-          position: "fixed",
-          bottom: "1em",
-          right: "1em",
-          backgroundColor: "#f50057", // Fab button background color
-          color: "#fff", // Fab button text color
-        }}
-      >
-        <NavigationIcon />
-        Reviews
-      </Fab>
-
-      <Drawer
-        anchor="top"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      >
-        {/* Add your review content here */}
-      </Drawer>
+      
+    
     </Card>
   );
 };

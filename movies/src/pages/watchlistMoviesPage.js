@@ -31,7 +31,7 @@ const WatchlistMoviesPage = () => {
       q.data.genre_ids = q.data.genres.map((g) => g.id);
       return q.data;
     }
-    return null; // or any default value you prefer for movies without data
+    return null; 
   });
   
   // Filter out null values if needed

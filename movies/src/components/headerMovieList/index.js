@@ -18,6 +18,9 @@ const Header = (props ) => {
         justifyContent: "space-around",
         flexWrap: "wrap",
         marginBottom: 1.5,
+        backgroundColor: '#19376A',
+        color: '#FDFDFD',
+
       }}
       >
       <IconButton
