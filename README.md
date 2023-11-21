@@ -35,7 +35,7 @@ My repo also contains multiple pages used to display all the content from the TM
 - **movieReviewPage.js:** _This is where users can see reviews written by other users about the movie._
 - **popularActorPage.js:** _This displays a list of popular actor currently at the moment._
 - **serieHomePage.js:** _This displays all the current TV Shows that are available to watch._
-- **seriePage.js:** _This page is to display the details and all the information about the TV Show. _
+- **seriePage.js:** _This page is to display the details and all the information about the TV Show._
 - **serieReviewPage.js:** _This is where users can see reviews written by other users about the show._ 
 - **upcomingMoviesPage.js:** _This page displays all the new Upcoming Movies currently available from TMDB._
 - **watchlistMoviesPage.js:** _This is the page where users can view the Upcoming movies they have added to their Watchlist._
@@ -75,7 +75,7 @@ Here is a list of the API points that i have used throught my application. I did
 + _Discover Movies that are Upcoming and available to watch soon -_ **/movie/upcoming**
 + _Get the images for all the Movies -_ **/movie/${id}**
 + _Search Movies List by Movie Genre - _**/genre/movie/list**
-+ _Get the images for all the Movies - _**/movie/${id}**
++ _Get the images for all the Movies -_ **/movie/${id}**
 + _Get the Movie reviews to display for each movie when review button is clicked -_ **/movie/${id}/reviews**
 + _ Get the Movie reviews to display for each movie when review button is clicked -_ **/tv/${id}/reviews**
 
@@ -89,8 +89,8 @@ Here is a list of the API points that i have used throught my application. I did
 + _Search for actors by Actors name -_ **/search/person**
 + _Get the details of the Actors such as name and overview of life -_ **/person/${id}**
 
-+ Display all the seasons the the TV Series - **/tv/${id}/season/${seasonNumber}**
-+ Display all the episodes of the TV Series - **/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}**
++ _Display all the seasons the the TV Series -_ **/tv/${id}/season/${seasonNumber}**
++ _Display all the episodes of the TV Series -_ **/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}**
 
 
 ## Routing.
@@ -100,12 +100,12 @@ Here i have included all my routing elements including movies and the new routes
 + **"/series/reviews/form" -** _This will direct the user to the SeriesReviewsForm Page to write a review about the selected TV Show._
 + **"/series/reviews/:id" -** _When review button is clicked, reviews are presented and when the user clicks on full review they are directed to the SeriesReviewPage that displays the full review from that user._
 + **"/movies/favorites" -** _This will direct user to the FavoritesMoviePage where their list of favorites will be displayed._
-+ **"/series"  - ** _This is the link for the SeriesHomePage that display all the TV Shows._
++ **"/series"  -** _This is the link for the SeriesHomePage that display all the TV Shows._
 + **"/actors" -** _This is the link for the ActorPage that will display the most popular actors._
 + **"/series/favorites" -** _This will direct the user to the favoriteSeriesPage where their list of TV Show favorites are displayed._
 + **"/series/:id" -** _This link will direct the user to the TV Shows details Page when more info is clicked. _
 + **"/movies/:id" -** _This link will direct the user to the Movies details Page when more info is clicked._
-+ **"/actors/:id" - ** _This link will direct the user to the Actors details Page when more info is clicked._
++ **"/actors/:id" -** _This link will direct the user to the Actors details Page when more info is clicked._
 + **"/reviews/:id" -** _When review button is clicked, reviews are presented and when the user clicks on full review they are directed to the MovieReviewPage that displays the full review from that user._
 + **"/movies/upcoming" -** _This link directs the user to the Upcoming Movies Page._
 + **"/movies/upcoming/watchlist" -** _This link will direct the user to the Watchlist Page that will display the list of upcoming movies they have added to their watchlist._
