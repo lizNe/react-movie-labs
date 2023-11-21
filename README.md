@@ -77,7 +77,7 @@ Here is a list of the API points that i have used throught my application. I did
 + _Search Movies List by Movie Genre - _**/genre/movie/list**
 + _Get the images for all the Movies -_ **/movie/${id}**
 + _Get the Movie reviews to display for each movie when review button is clicked -_ **/movie/${id}/reviews**
-+ _ Get the Movie reviews to display for each movie when review button is clicked -_ **/tv/${id}/reviews**
++ _Get the Movie reviews to display for each movie when review button is clicked -_ **/tv/${id}/reviews**
 
 + _Discover Latest Movie Available -_ **/movie/latest**
 + _Search Series List by Series Genre -_ **/genre/tv/list**
