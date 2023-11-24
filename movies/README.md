@@ -1,8 +1,10 @@
-# Assignment 1 - ReactJS app.
+# Assignment 1 - MoviesAPIReactJS app.
 
-Name: Elizabeth Neary 20071724
+**Name:** Elizabeth Neary
+</br>
+**Class:** Software Systems Development Year 4
 
-## Overview.
+## Overview
 My repository contains essential components that are used to build my movie web application. Components are the building blocks of a user interface and these were used to build different elements and pages for my movie website. The components i have for building my website are:
 
 - actorCard, actorDetails, actorList 
@@ -25,23 +27,20 @@ My repository contains essential components that are used to build my movie web 
 
 My repo also contains multiple pages used to display all the content from the TMDB APi such as:
 
-- **actorPage.js:** _This page is to display the details and all the information about the choosen actor._  ![Alt text](public/actorPage.png)
-
-- **addMovieReviewPage.js:** _This presents a form to the user allow them to write a review and rate movies from their movie favourites._ ![Alt text](public/writeMreview.png)
-
-- **addSerieReviewPage.js:** _This presents a form to the user allow them to write a review and rate TV Sows from their TV Series favourites._ ![Alt text](public/writeMreview.png)
-
-- **favoriteMoviesPage.js:** _This page displays all the Movies that the user has liked and added to their favorites page._ ![Alt text](public/writeMreview.png)
-- **favoriteSeriesPage.js:** _This page displays all the TV Shows that the user has liked and added to their TV Series favorites page._ ![Alt text](public/writeMreview.png)
-- **homePage.js:** _This page is the main page that displays all the movies currently out and available to watch to users._ ![Alt text](public/writeMreview.png)
-- **moviePage.js:** _This page is to display the details and all the information about the movie._ ![Alt text](public/writeMreview.png)
-- **movieReviewPage.js:** _This is where users can see reviews written by other users about the movie._ ![Alt text](public/writeMreview.png)
-- **popularActorPage.js:** _This displays a list of popular actor currently at the moment._ ![Alt text](public/writeMreview.png)
-- **serieHomePage.js:** _This displays all the current TV Shows that are available to watch._ ![Alt text](public/writeMreview.png)
-- **seriePage.js:** _This page is to display the details and all the information about the TV Show. _ ![Alt text](public/writeMreview.png)
-- **serieReviewPage.js:** _This is where users can see reviews written by other users about the show._ ![Alt text](public/writeMreview.png)
-- **upcomingMoviesPage.js:** _This page displays all the new Upcoming Movies currently available from TMDB._ ![Alt text](public/writeMreview.png)
-- **watchlistMoviesPage.js:** _This is the page where users can view the Upcoming movies they have added to their Watchlist._ ![Alt text](public/writeMreview.png)
+- **ActorPage.js:** _This page is to display the details and all the information about the choosen actor._ ![Alt text](movies/public/actorPage.png)
+- **AddMovieReviewPage.js:** _This presents a form to the user allow them to write a review and rate movies from their movie favourites._ ![Alt text](movies/public/writeMreview.png)
+- **AddSerieReviewPage.js:** _This presents a form to the user allow them to write a review and rate TV Sows from their TV Series favourites._ ![Alt text](movies/public/swritereview.png)
+- **FavoriteMoviesPage.js:** _This page displays all the Movies that the user has liked and added to their favorites page._ ![Alt text](movies/public/fav1.png)   ![Alt text](movies/public/fav2.png)
+- **FavoriteSeriesPage.js:** _This page displays all the TV Shows that the user has liked and added to their TV Series favorites page._ ![Alt text](movies/public/sfav.png) ![Alt text](movies/public/sfav2.png)
+- **HomePage.js:** _This page is the main page that displays all the movies currently out and available to watch to users._ ![Alt text](movies/public/home1.png) ![Alt text](movies/public/home2.png) ![Alt text](movies/public/home33.png)
+- **MoviePage.js:** _This page is to display the details and all the information about the movie._ ![Alt text](movies/public/moviePage.png)
+- **MovieReviewPage.js:** _This is where users can see reviews written by other users about the movie._ ![Alt text](movies/public/readm1.png) ![Alt text](movies/public/readm2.png)
+- **PopularActorPage.js:** _This displays a list of popular actor currently at the moment._ ![Alt text](movies/public/actor1.png) ![Alt text](movies/public/actors2.png)
+- **SerieHomePage.js:** _This displays all the current TV Shows that are available to watch._ ![Alt text](movies/public/s1.png) ![Alt text](movies/public/s2.png)
+- **SeriePage.js:** _This page is to display the details and all the information about the TV Show._ ![Alt text](movies/public/seriesPage.png)
+- **SerieReviewPage.js:** _This is where users can see reviews written by other users about the show._ ![Alt text](movies/public/reads1.png) ![Alt text](movies/public/reads2.png)
+- **UpcomingMoviesPage.js:** _This page displays all the new Upcoming Movies currently available from TMDB._ ![Alt text](movies/public/up1.png) ![Alt text](movies/public/up2.png) ![Alt text](movies/public/up3.png)
+- **WatchlistMoviesPage.js:** _This is the page where users can view the Upcoming movies they have added to their Watchlist._ ![Alt text](movies/public/w1.png) ![Alt text](movies/public/w2.png)
 
 It contains contexts such as movieContext and seriesContext for passing data through the component tree without the need to pass props down manually at every level, there is hooks for useMovie and useSeries, an images folder  used to display some images on the website through different ui design frameworks.
 
@@ -50,22 +49,35 @@ It contains contexts such as movieContext and seriesContext for passing data thr
  
 + **Search for Actors**
     - Implemented a search functionality for actors that allows users to filter actors based on their names with error and exception handling.
+    ![Alt text](movies/public/searchAct.png)
 
  + **Search for TV Shows**
     - Implemented a search functionality for TV Series Home Page that allows users to filter TV Shows based on the series title name.
+    ![Alt text](movies/public/search.png)
 
 + **New Navigation Bar**
     - Created a new Navigation Bar using MaterialUI framework with a drop down menu to display all the titles without cluttering.
     - It has a responsive design that caters to both desktop and mobile versions for successful naviagtion.
+    ![Alt text](movies/public/nav.png)
 
 + **Pagination**
     - I added Pagination element from MaterialUI to all my pages including TV Series and Popular Actors. It also handles error handling when users exceeds page limit giving them an option to return to main page.
+    ![Alt text](movies/public/page.png)
 
 + **Adding to Watchlist and Removing from Watchlist**
     - Implemented a function for users to add movies to their Watchlist from the Upcoming Movies page. A new delete icon was used from CoreUI framework and this icon allows the user to remove the movie from their Watchlist.
+     ![Alt text](movies/public/watchlist.png)      ![Alt text](movies/public/removeWatch.png)
+
 
 + **Picture Carousel**
     - I used a carousel template from React Bootstrap framework to display movie images on all my pages , just to add as a design element to my movie app that was visual.
+    ![Alt text](movies/public/cara.png)
+
++ **Latest Movie - See More or See Less Option**
+    - I used the framework CoreUi to create this Latest Movies Card compoenent to fit on the Home Page rather than taking up a seperate page on its own.
+    ![Alt text](movies/public/seemore.png)     ![Alt text](movies/public/seeless.png)
+
+
 
 ## Setup requirements.
 
@@ -77,10 +89,10 @@ Here is a list of the API points that i have used throught my application. I did
 + _Disocover the Most Recent Movie Releases -_ **/discover/movie**
 + _Discover Movies that are Upcoming and available to watch soon -_ **/movie/upcoming**
 + _Get the images for all the Movies -_ **/movie/${id}**
-+ _Search Movies List by Movie Genre -_ **/genre/movie/list**
++ _Search Movies List by Movie Genre - _**/genre/movie/list**
 + _Get the images for all the Movies -_ **/movie/${id}**
 + _Get the Movie reviews to display for each movie when review button is clicked -_ **/movie/${id}/reviews**
-+ _ Get the Movie reviews to display for each movie when review button is clicked -_ **/tv/${id}/reviews**
++ _Get the Movie reviews to display for each movie when review button is clicked -_ **/tv/${id}/reviews**
 
 + _Discover Latest Movie Available -_ **/movie/latest**
 + _Search Series List by Series Genre -_ **/genre/tv/list**
@@ -92,8 +104,8 @@ Here is a list of the API points that i have used throught my application. I did
 + _Search for actors by Actors name -_ **/search/person**
 + _Get the details of the Actors such as name and overview of life -_ **/person/${id}**
 
-+ _Display all the seasons the the TV Series_ - **/tv/${id}/season/${seasonNumber}**
-+ _Display all the episodes of the TV Series_ - **/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}**
++ _Display all the seasons the the TV Series -_ **/tv/${id}/season/${seasonNumber}**
++ _Display all the episodes of the TV Series -_ **/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}**
 
 
 ## Routing.
@@ -103,7 +115,7 @@ Here i have included all my routing elements including movies and the new routes
 + **"/series/reviews/form" -** _This will direct the user to the SeriesReviewsForm Page to write a review about the selected TV Show._
 + **"/series/reviews/:id" -** _When review button is clicked, reviews are presented and when the user clicks on full review they are directed to the SeriesReviewPage that displays the full review from that user._
 + **"/movies/favorites" -** _This will direct user to the FavoritesMoviePage where their list of favorites will be displayed._
-+ **"/series" -** _This is the link for the SeriesHomePage that display all the TV Shows._
++ **"/series"  -** _This is the link for the SeriesHomePage that display all the TV Shows._
 + **"/actors" -** _This is the link for the ActorPage that will display the most popular actors._
 + **"/series/favorites" -** _This will direct the user to the favoriteSeriesPage where their list of TV Show favorites are displayed._
 + **"/series/:id" -** _This link will direct the user to the TV Shows details Page when more info is clicked. _
