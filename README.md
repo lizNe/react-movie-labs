@@ -35,7 +35,7 @@ My repo also contains multiple pages used to display all the content from the TM
 - **HomePage.js:** _This page is the main page that displays all the movies currently out and available to watch to users._ ![Alt text](movies/public/home1.png) ![Alt text](movies/public/home2.png) ![Alt text](movies/public/home33.png)
 - **MoviePage.js:** _This page is to display the details and all the information about the movie._ ![Alt text](movies/public/moviePage.png)
 - **MovieReviewPage.js:** _This is where users can see reviews written by other users about the movie._ ![Alt text](movies/public/readm1.png) ![Alt text](movies/public/readm2.png)
-- **PopularActorPage.js:** _This displays a list of popular actor currently at the moment._ ![Alt text](movies/public/actor1.png)
+- **PopularActorPage.js:** _This displays a list of popular actor currently at the moment._ ![Alt text](movies/public/actor1.png) ![Alt text](movies/public/actors2.png)
 - **SerieHomePage.js:** _This displays all the current TV Shows that are available to watch._ ![Alt text](movies/public/s1.png) ![Alt text](movies/public/s2.png)
 - **SeriePage.js:** _This page is to display the details and all the information about the TV Show._ ![Alt text](movies/public/seriesPage.png)
 - **SerieReviewPage.js:** _This is where users can see reviews written by other users about the show._ ![Alt text](movies/public/reads1.png) ![Alt text](movies/public/reads2.png)
@@ -49,22 +49,35 @@ It contains contexts such as movieContext and seriesContext for passing data thr
  
 + **Search for Actors**
     - Implemented a search functionality for actors that allows users to filter actors based on their names with error and exception handling.
+    ![Alt text](movies/public/searchAct.png)
 
  + **Search for TV Shows**
     - Implemented a search functionality for TV Series Home Page that allows users to filter TV Shows based on the series title name.
+    ![Alt text](movies/public/search.png)
 
 + **New Navigation Bar**
     - Created a new Navigation Bar using MaterialUI framework with a drop down menu to display all the titles without cluttering.
     - It has a responsive design that caters to both desktop and mobile versions for successful naviagtion.
+    ![Alt text](movies/public/nav.png)
 
 + **Pagination**
     - I added Pagination element from MaterialUI to all my pages including TV Series and Popular Actors. It also handles error handling when users exceeds page limit giving them an option to return to main page.
+    ![Alt text](movies/public/page.png)
 
 + **Adding to Watchlist and Removing from Watchlist**
     - Implemented a function for users to add movies to their Watchlist from the Upcoming Movies page. A new delete icon was used from CoreUI framework and this icon allows the user to remove the movie from their Watchlist.
+     ![Alt text](movies/public/watchlist.png)       ![Alt text](movies/public/removeWatch.png)
+
 
 + **Picture Carousel**
     - I used a carousel template from React Bootstrap framework to display movie images on all my pages , just to add as a design element to my movie app that was visual.
+    ![Alt text](movies/public/cara.png)
+
++ **Latest Movie - See More or See Less Option**
+    - I used the framework CoreUi to create this Latest Movies Card compoenent to fit on the Home Page rather than taking up a seperate page on its own.
+    ![Alt text](movies/public/seemore.png)     ![Alt text](movies/public/seeless.png)
+
+
 
 ## Setup requirements.
 
