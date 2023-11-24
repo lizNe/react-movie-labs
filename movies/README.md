@@ -1,6 +1,6 @@
 # Assignment 1 - ReactJS app.
 
-Name: Elizabeth Neary
+Name: Elizabeth Neary 20071724
 
 ## Overview.
 My repository contains essential components that are used to build my movie web application. Components are the building blocks of a user interface and these were used to build different elements and pages for my movie website. The components i have for building my website are:
@@ -25,8 +25,9 @@ My repository contains essential components that are used to build my movie web 
 
 My repo also contains multiple pages used to display all the content from the TMDB APi such as:
 
-- **actorPage.js:** _This page is to display the details and all the information about the choosen actor._
-- **addMovieReviewPage.js:** _This presents a form to the user allow them to write a review and rate movies from their movie favourites._
+- **actorPage.js:** _This page is to display the details and all the information about the choosen actor._  ![Alt text](public/actorPage.png)
+
+- **addMovieReviewPage.js:** _This presents a form to the user allow them to write a review and rate movies from their movie favourites._ ![Alt text](public/writeMreview.png)
 - **addSerieReviewPage.js:** _This presents a form to the user allow them to write a review and rate TV Sows from their TV Series favourites._
 - **favoriteMoviesPage.js:** _This page displays all the Movies that the user has liked and added to their favorites page._
 - **favoriteSeriesPage.js:** _This page displays all the TV Shows that the user has liked and added to their TV Series favorites page._
