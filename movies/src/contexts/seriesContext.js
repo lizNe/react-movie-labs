@@ -5,7 +5,6 @@ export const SeriesContext = React.createContext(null);
 const SeriesContextProvider = (props) => {
   const [favorites, setFavorites] = useState([]);
   const [myReviews, setMyReviews] = useState({});
-  const [watchlist, setWatchlist] = useState([]);
 
   const addToFavorites = (serie) => {
     let newFavorites = [];
@@ -17,12 +16,6 @@ const SeriesContextProvider = (props) => {
     setFavorites(newFavorites);
   };
   
-
-  const addToWatchlist = (serie) => {
-    if (!watchlist.includes(serie.id)) {
-      setWatchlist([...watchlist, serie.id]);
-    }
-  };
 
   const addReview = (serie, review) => {
     setMyReviews({ ...myReviews, [serie.id]: review });
@@ -40,7 +33,6 @@ const SeriesContextProvider = (props) => {
         addToFavorites,
         removeFromFavorites,
         addReview,
-        addToWatchlist,
       }}
     >
       {props.children}
