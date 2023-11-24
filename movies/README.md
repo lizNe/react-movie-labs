@@ -28,18 +28,20 @@ My repo also contains multiple pages used to display all the content from the TM
 - **actorPage.js:** _This page is to display the details and all the information about the choosen actor._  ![Alt text](public/actorPage.png)
 
 - **addMovieReviewPage.js:** _This presents a form to the user allow them to write a review and rate movies from their movie favourites._ ![Alt text](public/writeMreview.png)
-- **addSerieReviewPage.js:** _This presents a form to the user allow them to write a review and rate TV Sows from their TV Series favourites._
-- **favoriteMoviesPage.js:** _This page displays all the Movies that the user has liked and added to their favorites page._
-- **favoriteSeriesPage.js:** _This page displays all the TV Shows that the user has liked and added to their TV Series favorites page._
-- **homePage.js:** _This page is the main page that displays all the movies currently out and available to watch to users._
-- **moviePage.js:** _This page is to display the details and all the information about the movie._ 
-- **movieReviewPage.js:** _This is where users can see reviews written by other users about the movie._
-- **popularActorPage.js:** _This displays a list of popular actor currently at the moment._
-- **serieHomePage.js:** _This displays all the current TV Shows that are available to watch._
-- **seriePage.js:** _This page is to display the details and all the information about the TV Show. _
-- **serieReviewPage.js:** _This is where users can see reviews written by other users about the show._ 
-- **upcomingMoviesPage.js:** _This page displays all the new Upcoming Movies currently available from TMDB._
-- **watchlistMoviesPage.js:** _This is the page where users can view the Upcoming movies they have added to their Watchlist._
+
+- **addSerieReviewPage.js:** _This presents a form to the user allow them to write a review and rate TV Sows from their TV Series favourites._ ![Alt text](public/writeMreview.png)
+
+- **favoriteMoviesPage.js:** _This page displays all the Movies that the user has liked and added to their favorites page._ ![Alt text](public/writeMreview.png)
+- **favoriteSeriesPage.js:** _This page displays all the TV Shows that the user has liked and added to their TV Series favorites page._ ![Alt text](public/writeMreview.png)
+- **homePage.js:** _This page is the main page that displays all the movies currently out and available to watch to users._ ![Alt text](public/writeMreview.png)
+- **moviePage.js:** _This page is to display the details and all the information about the movie._ ![Alt text](public/writeMreview.png)
+- **movieReviewPage.js:** _This is where users can see reviews written by other users about the movie._ ![Alt text](public/writeMreview.png)
+- **popularActorPage.js:** _This displays a list of popular actor currently at the moment._ ![Alt text](public/writeMreview.png)
+- **serieHomePage.js:** _This displays all the current TV Shows that are available to watch._ ![Alt text](public/writeMreview.png)
+- **seriePage.js:** _This page is to display the details and all the information about the TV Show. _ ![Alt text](public/writeMreview.png)
+- **serieReviewPage.js:** _This is where users can see reviews written by other users about the show._ ![Alt text](public/writeMreview.png)
+- **upcomingMoviesPage.js:** _This page displays all the new Upcoming Movies currently available from TMDB._ ![Alt text](public/writeMreview.png)
+- **watchlistMoviesPage.js:** _This is the page where users can view the Upcoming movies they have added to their Watchlist._ ![Alt text](public/writeMreview.png)
 
 It contains contexts such as movieContext and seriesContext for passing data through the component tree without the need to pass props down manually at every level, there is hooks for useMovie and useSeries, an images folder  used to display some images on the website through different ui design frameworks.
 
