@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import Header from "../headerActorsList";
-import FilterCard from "../filterActorsCard"; // You may need to adjust the import
-import ActorList from "../actorList";
+import React, { useState, lazy, Suspense } from "react";
 import Grid from "@mui/material/Grid";
-import PageCarousel from "../pageCarousel";
 import { getActorNameSearch } from "../../api/tmdb-api";
+
+// Lazy loading for components
+const Header = lazy(() => import("../headerActorsList"));
+const FilterCard = lazy(() => import("../filterActorsCard"));
+const ActorList = lazy(() => import("../actorList"));
+const Carousel = lazy(() => import('../pageCarousel'));
+
+
+// Lazy loading fallback component
+const LoadingFallback = () => <h1>Loading...</h1>;
 
 function ActorListPageTemplate({ actors, title, action, onSearchActors }) {
   const [nameFilter, setNameFilter] = useState("");
-
 
   let displayedActors = actors.filter((a) => {
     return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
@@ -26,22 +31,23 @@ function ActorListPageTemplate({ actors, title, action, onSearchActors }) {
       console.error("Error searching for actors:", error);
     }
   };
-  
 
   return (
-    <Grid container sx={{ padding: '20px' }}>
-      <Grid item xs={12}>
-        <Header title={title} />
-        <PageCarousel /> 
-      </Grid>
-      <Grid item container spacing={2}>
-        <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>
-          <FilterCard onSearchActors={handleSearchActors}
-          />
+    <Suspense fallback={<LoadingFallback />}>
+      <Grid container sx={{ padding: '20px' }}>
+        <Grid item xs={12}>
+          <Header title={title} />
+          <Carousel />
         </Grid>
-        <ActorList action={action} actors={displayedActors}></ActorList>
+        <Grid item container spacing={2}>
+          <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>
+            <FilterCard onSearchActors={handleSearchActors} />
+          </Grid>
+          <ActorList action={action} actors={displayedActors} />
+        </Grid>
       </Grid>
-    </Grid>
+    </Suspense>
   );
 }
+
 export default ActorListPageTemplate;

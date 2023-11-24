@@ -1,11 +1,12 @@
-import React from "react";
+import React, { lazy, Suspense } from "react"; // Add import for lazy and Suspense
 import { useQuery } from "react-query";
-import Spinner from '../spinner';
-import ActorHeader from '../headerActor';
 import Grid from "@mui/material/Grid";
 import { getActorImages } from '../../api/tmdb-api';
 import { Card, CardMedia } from "@mui/material";
 
+
+const ActorHeader = lazy(() => import('../headerActor'));
+const Spinner = lazy(() => import('../spinner'));
 
 
 const TemplateActorPage = ({ actor, children }) => {
@@ -15,32 +16,37 @@ const TemplateActorPage = ({ actor, children }) => {
   );
 
   if (isLoading) {
-    return <Spinner />;
+    return (
+      <Suspense fallback={<Spinner />}>
+        <Spinner />
+      </Suspense>
+    );
   }
 
   if (isError) {
     return <h1>{error.message}</h1>;
   }
 
-
   return (
     <>
-      <ActorHeader actor={actor} />
-      <Grid container spacing={4} sx={{ padding: "15px" }}>
-        <Grid item xs={2.5}>
-          <Card>
-            <CardMedia
-              component="img"
-              alt={actor.name}
-              height="100%"
-              image={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-            />
-          </Card>
+      <Suspense fallback={<Spinner />}>
+        <ActorHeader actor={actor} />
+        <Grid container spacing={4} sx={{ padding: "15px" }}>
+          <Grid item xs={2.5}>
+            <Card>
+              <CardMedia
+                component="img"
+                alt={actor.name}
+                height="100%"
+                image={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={9}>
+            {children}
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          {children}
-        </Grid>
-      </Grid>
+      </Suspense>
     </>
   );
 };

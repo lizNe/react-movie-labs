@@ -1,9 +1,15 @@
-import React, { useState } from "react";
-import Header from "../headerSeriesList";
-import FilterCard from "../filterSeriesCard";
-import SeriesList from "../seriesList";
+import React, { useState, lazy, Suspense } from "react";
 import Grid from "@mui/material/Grid";
-import PageCarousel from "../pageCarousel";
+
+// Lazy loading for components
+const Header = lazy(() => import("../headerSeriesList"));
+const FilterCard = lazy(() => import("../filterSeriesCard"));
+const SeriesList = lazy(() => import("../seriesList"));
+const Carousel = lazy(() => import('../pageCarousel'));
+
+
+// Lazy loading fallback component
+const LoadingFallback = () => <h1>Loading...</h1>;
 
 function TVSeriesListPageTemplate({ series, title, action }) {
   const [nameTVFilter, setNameTVFilter] = useState("");
@@ -24,25 +30,28 @@ function TVSeriesListPageTemplate({ series, title, action }) {
   };
 
   return (
-    <Grid container sx={{ padding: '20px' }}>
-      <Grid item xs={12}>
-        <Header title={title} />
-        <PageCarousel /> 
+    <Suspense fallback={<LoadingFallback />}>
+      <Grid container sx={{ padding: '20px' }}>
+        <Grid item xs={12}>
+          <Header title={title} />
+          <Carousel />
         </Grid>
         <Grid item xs={12}>
-        <FilterCard
+          <FilterCard
             onUserInput={handleChange}
             nameFilter={nameTVFilter}
             genreFilter={genreTVFilter}
           />
-      </Grid>
-      <Grid item container spacing={2}>
-        <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>
-        
         </Grid>
-        <SeriesList action={action} series={displayedSeries}></SeriesList>
+        <Grid item container spacing={2}>
+          <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={20}>
+          </Grid>
+          <Suspense fallback={<LoadingFallback />}>
+            <SeriesList action={action} series={displayedSeries} />
+          </Suspense>
+        </Grid>
       </Grid>
-    </Grid>
+    </Suspense>
   );
 }
 
